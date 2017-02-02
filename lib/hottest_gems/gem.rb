@@ -55,7 +55,7 @@ class HottestGems::Gem
 
   private
   def self.scrape_list
-    doc = Nokogiri::HTML(open('https://rubygems.org/stats'))
+    doc = Nokogiri::HTML(open('https://rubygems.org/stats', ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
     doc.css(".stats__graph__gem__name a").each do |a|
       new(a.text.strip, "https://rubygems.org" + a.attribute("href").strip)
     end
@@ -63,11 +63,11 @@ class HottestGems::Gem
   end
 
   def self.scrape_now_data(index)
-    Nokogiri::HTML(open('https://rubygems.org/stats')).css(".stat .stat__count")[index].text.strip
+    Nokogiri::HTML(open('https://rubygems.org/stats', ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE)).css(".stat .stat__count")[index].text.strip
   end
 
   def scrape_data(css_selector)
-    Nokogiri::HTML(open(@url)).css(css_selector)[0].text.strip
+    Nokogiri::HTML(open(@url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE)).css(css_selector)[0].text.strip
   end
 
 end
