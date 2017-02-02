@@ -1,5 +1,5 @@
 require 'pry'
-require 'open-url'
+require 'open-uri'
 require 'nokogiri'
 
 require_relative 'hottest_gems/cli'
