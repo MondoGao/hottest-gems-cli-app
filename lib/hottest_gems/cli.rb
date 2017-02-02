@@ -15,7 +15,7 @@ class HottestGems::CLI
       puts ""
       input = gets.strip
       if input == "list"
-        list
+        print_list
       elsif input.to_i > 0
         HottestGems::Gem.gem_at(input.to_i - 1).print_details
       end
