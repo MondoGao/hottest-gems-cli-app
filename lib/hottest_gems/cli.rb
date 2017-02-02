@@ -27,7 +27,7 @@ class HottestGems::CLI
     puts "ALL TIME MOST DOWNLOADED".red
     puts ""
     HottestGems::Gem.all.each_with_index do |gem, i|
-      puts "  #{i + 1}. #{gem.name.upcase}".blue
+      puts "  #{i + 1}. #{gem.name.capitalize}".blue
       puts "    Total Downloads: #{gem.total_downloads}".red
     end
     puts ""
