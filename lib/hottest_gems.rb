@@ -1,6 +1,7 @@
 require 'pry'
 require 'open-uri'
 require 'nokogiri'
+require 'colorize'
 require 'openssl'
 
 module HottestGems

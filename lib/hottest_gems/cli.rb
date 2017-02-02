@@ -24,11 +24,11 @@ class HottestGems::CLI
 
   def print_list
     puts ""
-    puts "ALL TIME MOST DOWNLOADED"
+    puts "ALL TIME MOST DOWNLOADED".red
     puts ""
     HottestGems::Gem.all.each_with_index do |gem, i|
-      puts "  #{i + 1}. #{gem.name}"
-      puts "    Total Downloads: #{gem.total_downloads}"
+      puts "  #{i + 1}. #{gem.name.upcase}".blue
+      puts "    Total Downloads: #{gem.total_downloads}".red
     end
     puts ""
   end

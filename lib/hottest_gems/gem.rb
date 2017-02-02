@@ -28,7 +28,7 @@ class HottestGems::Gem
 
   def print_details
     puts ""
-    puts "Name: #{self.name}"
+    puts "#{self.name.upcase}".blue
     puts "  Version: #{self.version}"
     puts "  Total Downloads: #{self.total_downloads}"
     puts "  Version Downloads: #{self.version_downloads}"
