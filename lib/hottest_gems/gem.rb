@@ -4,7 +4,6 @@ class HottestGems::Gem
   def initialize(name, url)
     @name = name
     @url = url
-    @@all << self
   end
 
   def self.all
@@ -56,10 +55,9 @@ class HottestGems::Gem
   private
   def self.scrape_list
     doc = Nokogiri::HTML(open('https://rubygems.org/stats', ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
-    doc.css(".stats__graph__gem__name a").each do |a|
-      new(a.text.strip, "https://rubygems.org" + a.attribute("href").strip)
+    doc.css(".stats__graph__gem__name a").collect do |a|
+      new(a.text.strip, "https://rubygems.org" + a.attribute("href").value.strip)
     end
-    @@all
   end
 
   def self.scrape_now_data(index)
