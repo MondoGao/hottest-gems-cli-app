@@ -1,5 +1,5 @@
 class HottestGems::Gem
-  attr_reader :name, :url
+  attr_reader :name, :version, :stars, :total_downloads, :version_downloads
 
   def initialize(name, url)
     @name = name
@@ -27,7 +27,20 @@ class HottestGems::Gem
     self.all[index]
   end
 
+  def version
+    @version ||= scrape_data(".page__subheading")
+  end
+
+  def stars
+    @stars ||= scrape_data(".gh-count")
+  end
+
   def total_downloads
+    @total_downloads ||= scrape_data(".gh-count")
+  end
+
+  def version_downloads
+    @version_downloads ||= scrape_data(".gem__downloads")
   end
 
   private
@@ -41,6 +54,10 @@ class HottestGems::Gem
 
   def self.scrape_now_data(index)
     Nokogiri::HTML(open('https://rubygems.org/stats')).css(".stat .stat__count")[index].text.strip
+  end
+
+  def scrape_data(css_selector)
+    Nokogiri::HTML(open(@url)).css(css_selector)[0].text.strip
   end
 
 end
