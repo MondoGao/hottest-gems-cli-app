@@ -28,7 +28,7 @@ class HottestGems::CLI
     puts ""
     HottestGems::Gem.all.each_with_index do |gem, i|
       puts "  #{i + 1}. #{gem.name}"
-      put "    Total Downloads: #{gem.total_downloads}"
+      puts "    Total Downloads: #{gem.total_downloads}"
     end
     puts ""
   end
