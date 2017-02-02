@@ -27,6 +27,16 @@ class HottestGems::Gem
     self.all[index]
   end
 
+  def print_details
+    puts ""
+    puts "Name: #{self.name}"
+    put "  Version: #{self.version}"
+    put "  Stars: #{self.stars}"
+    put "  Total Downloads: #{self.total_downloads}"
+    put "  Version Downloads: #{self.version_downloads}"
+    puts ""
+  end
+
   def version
     @version ||= scrape_data(".page__subheading")
   end
